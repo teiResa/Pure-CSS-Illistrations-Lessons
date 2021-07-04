@@ -1,0 +1,133 @@
+/* On codepen, add preprocessor by: settings > CSS > CSS Preprocessor > SCSS */
+/*
+*Preprocessors allow for the use of variables (and other things). 
+* SCSS variables require a $ before their name, and to be assigned a value. After that, it can be used 
+* to your heart's content. 
+* declare any variables at the top. ("global scope"?  look that up.)
+*/
+$black: #20184E;
+$head-color: #FBD671;   /* the "skin" colour */
+$background: #FFAADD;   /* Instructor had #FEEE9D*/
+$tongue-color: #F15962;
+
+*:before, *:after {
+  position: absolute;
+  content: '';
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+body {
+  background: $background;  /* now variables control the colour rather than the HEX codes. */
+}
+* {
+  position: absolute;
+}
+.head {
+  width: 300px;
+  height: 300px;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  background-color: $head-color;
+  
+  box-shadow: inset -10px 0px darken($head-color, 10%);
+  /* SCSS has "color functions". They are very usful for manipulating colours.  
+  *          box-shadow: inset -10px 0px #EFBB42;
+  * Using "darken()" function, we can quickly darken the $head-color varible by 20%. Much, much easier. I changed it to 10% to soften the shadow. I like it more.
+  */
+}
+.face {
+  width: 150px;
+  height: 170px;
+  left: 75px;
+  top: 75px;
+}
+.mouth {
+  width: 100%;
+  height: 75px;
+  bottom: 0;
+  left: 0;
+  background-color: $black;
+  border-radius: 10px 10px 150px 150px;
+  border: 5px solid $black;
+  overflow: hidden;
+  &:after {
+    background-color: $tongue-color;
+    width: 100px;
+    height: 80px;
+    border-radius: 50%;
+    left:25px;
+    top:30px;
+  }
+}
+/*
+A & psudo-selector defeats the purpose of the HTML class "tongue". Using & and :after, we can keep this only on the CSS. Less HMTL junk needed.
+.tongue {
+  width: 100px;
+  height: 80px;
+  left: 25px;
+  top: 30px;
+  background-color: $tongue-color;
+  border-radius: 50%;
+}
+*/
+/*
+* This was the original eye section, below I nested it.
+* Works like HTML's nesting. Boxes within boxes. Try to keep it =< 3 layers.
+* The & selector effects the parents AND the child. 
+*Not just the child, so the child alone (if elsewhere) would remain uneffected. 
+
+.eye-group {
+  width: 150px;
+  height: 50px;
+  top: 10px;
+  left: 0;
+}
+.eye {
+  background-color: $black;
+  width: 30px;
+  height: 50px;
+  border-radius: 50%;
+}
+.eye-left {
+  left: 15px;
+}
+.eye-right {
+  right: 15px;
+}
+*/
+
+.eye-group {
+  top:10px;
+  left: 0;
+  width: 150px;
+  height: 50px;
+  .eye{
+    background-color: $black;
+    width: 30px;
+    height: 50px;
+    border-radius: 100%;
+    &.eye-left{
+      left: 15px;
+    }
+    &.eye-right{
+      right: 15px;
+    }
+  }
+}
+
+.pupil {
+  width: 10px;
+  height: 15px;
+  top: 5px;
+  background-color: $head-color;
+  border-radius: 50%;        /* makes it circular  */
+}
