@@ -1,0 +1,42 @@
+img{
+  width: 90%;
+  height: auto;
+  border: 2px black solid;
+  margin-left: 15%;
+
+
+
+}
+
+
+
+.img-gallery {
+
+  background-color: blue;
+  width: 95%;
+  display: inline;
+
+
+
+
+}
+
+#data-box-1, #data-box-2, #data-box-3{
+
+  border: 1px solid;
+  border-radius: 100%;
+  background-color: brown;
+  float:left;
+  width: 330px;
+  height:auto;
+  margin: 2px 3%;
+  position: sticky;
+
+  text-align: center;
+
+  p{
+    color: #FFAADD;
+  }
+
+
+}
